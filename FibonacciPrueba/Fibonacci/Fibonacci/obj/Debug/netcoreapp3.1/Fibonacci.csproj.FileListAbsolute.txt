@@ -1,0 +1,3 @@
+C:\Users\Erje_\source\repos\EdgarAguasvivasPrueba\FibonacciPrueba\Fibonacci\Fibonacci\obj\Debug\netcoreapp3.1\Fibonacci.AssemblyInfoInputs.cache
+C:\Users\Erje_\source\repos\EdgarAguasvivasPrueba\FibonacciPrueba\Fibonacci\Fibonacci\obj\Debug\netcoreapp3.1\Fibonacci.AssemblyInfo.cs
+C:\Users\Erje_\source\repos\EdgarAguasvivasPrueba\FibonacciPrueba\Fibonacci\Fibonacci\obj\Debug\netcoreapp3.1\Fibonacci.csproj.CoreCompileInputs.cache

@@ -12,9 +12,10 @@ namespace EdgarAguasvivasPrueba.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
-      
+
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Solicitud> Solicitudes { get; set; }
+        public DbSet<Estado> Estados { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,18 +27,19 @@ namespace EdgarAguasvivasPrueba.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Solicitud>(entity =>
-            {
-                entity.Property(e => e.Persona)
-                    .IsRequired();
+            {               
 
                 entity.Property(e => e.FechaCreacion)
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.Estado)
-                    .IsRequired();
-
-                entity.Property(e => e.PersonaId)
-               
+                entity.HasOne(p => p.Personas)
+               .WithMany(b => b.Solicitudes)
+               .HasForeignKey(e => e.PersonaId);
+                
+                entity.HasOne(p => p.Estados)
+               .WithMany(b => b.Solicitudes)
+               .HasForeignKey(e => e.EstadoId)
+               .IsRequired();
 
 
             });
@@ -56,8 +58,15 @@ namespace EdgarAguasvivasPrueba.Data
 
 
             });
+
+            modelBuilder.Entity<Persona>(entity =>
+            {
+                entity.HasMany(e => e.Solicitudes)
+                .WithOne();
+             
+            });
+
+
         }
-
-
     }
 }

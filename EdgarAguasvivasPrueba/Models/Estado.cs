@@ -10,5 +10,7 @@ namespace EdgarAguasvivasPrueba.Models
         public int Id { get; set; }
 
         public string EstadoNombre { get; set; }
+
+        public List<Solicitud> Solicitudes { get; set; }
     }
 }

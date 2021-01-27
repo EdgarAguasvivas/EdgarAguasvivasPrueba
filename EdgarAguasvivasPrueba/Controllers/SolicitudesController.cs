@@ -1,6 +1,7 @@
 ﻿using EdgarAguasvivasPrueba.Data;
 using EdgarAguasvivasPrueba.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,18 @@ namespace EdgarAguasvivasPrueba.Controllers
 
         public IActionResult CreateSolicitud()
         {
+            ViewBag.Estados = _data.Estados.Select(a =>
+                                  new SelectListItem
+                                  {
+                                      Value = a.Id.ToString(),
+                                      Text = a.EstadoNombre
+                                  }).ToList();
+            ViewBag.Personas = _data.Personas.Select(a =>
+                                  new SelectListItem
+                                  {
+                                      Value = a.Id.ToString(),
+                                      Text = a.Nombre + " " + a.Apellido
+                                  }).ToList();
             return View();
         }
 

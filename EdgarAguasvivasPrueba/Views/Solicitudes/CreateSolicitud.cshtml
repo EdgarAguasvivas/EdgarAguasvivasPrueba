@@ -7,16 +7,16 @@
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <form class="m-1 p-1" method="post">
     <div class="form-group">
-        <label asp-for="Persona"></label>
-        <select asp-for="Persona">
+        <label asp-for="Personas"></label>
+        <select asp-for="Personas" asp-items="@(new SelectList(@ViewBag.Personas))">
         </select>
-        <span asp-validation-for="Persona" class="text-danger"></span>
+        <span asp-validation-for="Personas" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Estado"></label>
-        <select asp-for="Estado">          
+        <label asp-for="Estados"></label>
+        <select asp-for="Estados" asp-items="@(new SelectList(ViewBag.Estados))">          
         </select>
-        <span asp-validation-for="Estado" class="text-danger"></span>
+        <span asp-validation-for="Estados" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="FechaCreacion"></label>

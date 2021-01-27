@@ -7,7 +7,7 @@
 
 
 
-<h3><a asp-action="Create" class="btn btn-sm btn-secondary">Create</a></h3>
+<h3><a asp-action="CreateSolicitud" class="btn btn-sm btn-secondary">Crear</a></h3>
 <table class="table table-bordered table-sm table-striped">
     <thead>
         <tr><th>Id</th><th>Persona</th><th>Estado</th><th>Fecha De Creacion</th><th>...</th></tr>
@@ -24,8 +24,8 @@
             {
                 <tr>
                     <td>@p.Id</td>
-                    <td>@p.Persona</td>
-                    <td>@p.Estado</td>                  
+                    <td>@p.Personas</td>
+                    <td>@p.Estados</td>                  
                     <td>@string.Format("{0:dddd, dd MMMM yyyy}", p.FechaCreacion)</td>
                     <td><a asp-action="EditSolicitud" asp-route-id="@p.Id">Editar</a>                    
                         <form asp-action="DeleteSolicitud" method="post" asp-route-id="@p.Id">
