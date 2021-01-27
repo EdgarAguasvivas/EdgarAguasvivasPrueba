@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EdgarAguasvivasPrueba.Models.Solicitud>
+
+
+@{
+    Layout = "_Layout";
+}
+
+
+
+<h3><a asp-action="Create" class="btn btn-sm btn-secondary">Create</a></h3>
+<table class="table table-bordered table-sm table-striped">
+    <thead>
+        <tr><th>Id</th><th>Persona</th><th>Estado</th><th>Fecha De Creacion</th><th>...</th></tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+            <tr><td colspan="7" class="text-center">No contiene data</td></tr>
+
+        }
+        else
+        {
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.Persona</td>
+                    <td>@p.Estado</td>                  
+                    <td>@string.Format("{0:dddd, dd MMMM yyyy}", p.FechaCreacion)</td>
+                    <td><a asp-action="EditSolicitud" asp-route-id="@p.Id">Editar</a>                    
+                        <form asp-action="DeleteSolicitud" method="post" asp-route-id="@p.Id">
+                            <button>Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>

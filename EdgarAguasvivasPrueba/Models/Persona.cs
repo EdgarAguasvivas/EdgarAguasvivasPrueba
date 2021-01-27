@@ -14,5 +14,7 @@ namespace EdgarAguasvivasPrueba.Models
         public string Pasaporte { get; set; }
         public string Direccion { get; set; }
         public string Sexo { get; set; }
+
+        public List<Solicitud> Solicitudes { get; set; }
     }
 }

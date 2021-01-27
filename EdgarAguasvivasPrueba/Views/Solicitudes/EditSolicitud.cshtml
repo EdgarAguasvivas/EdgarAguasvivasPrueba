@@ -1,0 +1,27 @@
+﻿@model Solicitud
+
+@{
+    Layout = "_Layout";   
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form class="m-1 p-1" method="post">
+    <div class="form-group">
+        <label asp-for="Id"></label>
+        <input asp-for="Id" type="text" readonly class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Persona"></label>
+        <select asp-for="Persona">           
+        </select>
+        <span asp-validation-for="Persona" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Estado"></label>
+        <select asp-for="Estado">           
+        </select>
+        <span asp-validation-for="Estado" class="text-danger"></span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+</form> 
