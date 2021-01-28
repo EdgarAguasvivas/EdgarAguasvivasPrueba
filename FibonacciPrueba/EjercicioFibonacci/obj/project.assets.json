@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Erje_\\source\\repos\\EdgarAguasvivasPrueba\\FibonacciPrueba\\Fibonacci\\Fibonacci\\Fibonacci.csproj",
-      "projectName": "Fibonacci",
-      "projectPath": "C:\\Users\\Erje_\\source\\repos\\EdgarAguasvivasPrueba\\FibonacciPrueba\\Fibonacci\\Fibonacci\\Fibonacci.csproj",
+      "projectUniqueName": "C:\\Users\\Erje_\\source\\repos\\EjercicioFibonacci\\EjercicioFibonacci\\EjercicioFibonacci.csproj",
+      "projectName": "EjercicioFibonacci",
+      "projectPath": "C:\\Users\\Erje_\\source\\repos\\EjercicioFibonacci\\EjercicioFibonacci\\EjercicioFibonacci.csproj",
       "packagesPath": "C:\\Users\\Erje_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Erje_\\source\\repos\\EdgarAguasvivasPrueba\\FibonacciPrueba\\Fibonacci\\Fibonacci\\obj\\",
+      "outputPath": "C:\\Users\\Erje_\\source\\repos\\EjercicioFibonacci\\EjercicioFibonacci\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

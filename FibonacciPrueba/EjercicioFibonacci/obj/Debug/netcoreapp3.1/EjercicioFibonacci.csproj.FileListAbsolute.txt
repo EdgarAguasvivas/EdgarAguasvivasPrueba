@@ -1,0 +1,12 @@
+C:\Users\Erje_\source\repos\EjercicioFibonacci\EjercicioFibonacci\obj\Debug\netcoreapp3.1\EjercicioFibonacci.AssemblyInfoInputs.cache
+C:\Users\Erje_\source\repos\EjercicioFibonacci\EjercicioFibonacci\obj\Debug\netcoreapp3.1\EjercicioFibonacci.AssemblyInfo.cs
+C:\Users\Erje_\source\repos\EjercicioFibonacci\EjercicioFibonacci\obj\Debug\netcoreapp3.1\EjercicioFibonacci.csproj.CoreCompileInputs.cache
+C:\Users\Erje_\source\repos\EjercicioFibonacci\EjercicioFibonacci\bin\Debug\netcoreapp3.1\EjercicioFibonacci.exe
+C:\Users\Erje_\source\repos\EjercicioFibonacci\EjercicioFibonacci\bin\Debug\netcoreapp3.1\EjercicioFibonacci.deps.json
+C:\Users\Erje_\source\repos\EjercicioFibonacci\EjercicioFibonacci\bin\Debug\netcoreapp3.1\EjercicioFibonacci.runtimeconfig.json
+C:\Users\Erje_\source\repos\EjercicioFibonacci\EjercicioFibonacci\bin\Debug\netcoreapp3.1\EjercicioFibonacci.runtimeconfig.dev.json
+C:\Users\Erje_\source\repos\EjercicioFibonacci\EjercicioFibonacci\bin\Debug\netcoreapp3.1\EjercicioFibonacci.dll
+C:\Users\Erje_\source\repos\EjercicioFibonacci\EjercicioFibonacci\bin\Debug\netcoreapp3.1\EjercicioFibonacci.pdb
+C:\Users\Erje_\source\repos\EjercicioFibonacci\EjercicioFibonacci\obj\Debug\netcoreapp3.1\EjercicioFibonacci.dll
+C:\Users\Erje_\source\repos\EjercicioFibonacci\EjercicioFibonacci\obj\Debug\netcoreapp3.1\EjercicioFibonacci.pdb
+C:\Users\Erje_\source\repos\EjercicioFibonacci\EjercicioFibonacci\obj\Debug\netcoreapp3.1\EjercicioFibonacci.genruntimeconfig.cache
