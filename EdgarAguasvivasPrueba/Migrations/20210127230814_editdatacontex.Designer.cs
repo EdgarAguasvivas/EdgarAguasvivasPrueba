@@ -4,14 +4,16 @@ using EdgarAguasvivasPrueba.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EdgarAguasvivasPrueba.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210127230814_editdatacontex")]
+    partial class editdatacontex
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,6 +44,7 @@ namespace EdgarAguasvivasPrueba.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Apellido")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Direccion")
@@ -51,12 +54,14 @@ namespace EdgarAguasvivasPrueba.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Pasaporte")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Sexo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -75,9 +80,14 @@ namespace EdgarAguasvivasPrueba.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FechaCreacion")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("(getdate())");
 
                     b.Property<int>("PersonaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PersonaId1")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -86,36 +96,42 @@ namespace EdgarAguasvivasPrueba.Migrations
 
                     b.HasIndex("PersonaId");
 
+                    b.HasIndex("PersonaId1");
+
                     b.ToTable("Solicitudes");
                 });
 
             modelBuilder.Entity("EdgarAguasvivasPrueba.Models.Solicitud", b =>
                 {
-                    b.HasOne("EdgarAguasvivasPrueba.Models.Estado", "Estado")
-                        .WithMany("Solicitud")
+                    b.HasOne("EdgarAguasvivasPrueba.Models.Estado", "Estados")
+                        .WithMany("Solicitudes")
                         .HasForeignKey("EstadoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EdgarAguasvivasPrueba.Models.Persona", "Persona")
-                        .WithMany("Solicitud")
+                    b.HasOne("EdgarAguasvivasPrueba.Models.Persona", null)
+                        .WithMany("Solicitudes")
                         .HasForeignKey("PersonaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Estado");
+                    b.HasOne("EdgarAguasvivasPrueba.Models.Persona", "Persona")
+                        .WithMany()
+                        .HasForeignKey("PersonaId1");
+
+                    b.Navigation("Estados");
 
                     b.Navigation("Persona");
                 });
 
             modelBuilder.Entity("EdgarAguasvivasPrueba.Models.Estado", b =>
                 {
-                    b.Navigation("Solicitud");
+                    b.Navigation("Solicitudes");
                 });
 
             modelBuilder.Entity("EdgarAguasvivasPrueba.Models.Persona", b =>
                 {
-                    b.Navigation("Solicitud");
+                    b.Navigation("Solicitudes");
                 });
 #pragma warning restore 612, 618
         }

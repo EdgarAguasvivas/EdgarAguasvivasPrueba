@@ -1,0 +1,44 @@
+﻿@model IEnumerable<EdgarAguasvivasPrueba.Models.Persona>
+
+
+@{
+    Layout = "_Layout";
+}
+
+
+
+<h3><a asp-action="CreatePersona" class="btn btn-sm btn-secondary">Crear</a></h3>
+<table class="table table-bordered table-sm table-striped">
+    <thead>
+        <tr><th>Id</th><th>Nombre</th><th>Apellido</th><th>Fecha De Nacimiento</th><th>Pasaporte</th><th>Direccion</th><th>Sexo</th><th>...</th></tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+            <tr><td colspan="7" class="text-center">No contiene data</td></tr>
+
+        }
+        else
+        {
+            @foreach (var p in Model)
+            {
+    <tr>
+        <td>@p.Id</td>
+        <td>@p.Nombre</td>
+        <td>@p.Apellido</td>
+        <td>@string.Format("{0:dddd, dd MMMM yyyy}", p.FechaNacimiento)</td>
+        <td>@p.Pasaporte</td>
+        <td>@p.Direccion</td>
+        <td>@p.Sexo</td>
+        <td>
+            <a asp-action="EditPersona" asp-route-id="@p.Id" class="btn btn-dark">Editar</a>
+            <form asp-action="DeletePersona" method="post" asp-route-id="@p.Id">
+                <button class="btn btn-danger">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+
+            }
+        }
+    </tbody>
+</table>

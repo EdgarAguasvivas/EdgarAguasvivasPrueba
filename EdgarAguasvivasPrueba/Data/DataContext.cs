@@ -26,45 +26,26 @@ namespace EdgarAguasvivasPrueba.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Solicitud>(entity =>
-            {               
-
-                entity.Property(e => e.FechaCreacion)
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.HasOne(p => p.Personas)
-               .WithMany(b => b.Solicitudes)
-               .HasForeignKey(e => e.PersonaId);
-                
-                entity.HasOne(p => p.Estados)
-               .WithMany(b => b.Solicitudes)
-               .HasForeignKey(e => e.EstadoId)
-               .IsRequired();
-
-
-            });
-
-            modelBuilder.Entity<Persona>(entity =>
-            {
-
-                entity.Property(e => e.Nombre)
+            modelBuilder.Entity<Persona>()
+                   .HasMany(d => d.Solicitud)
+                    .WithOne(p => p.Persona)
                     .IsRequired();
 
-                entity.Property(e => e.Apellido)
-                  .IsRequired();
-
-                entity.Property(e => e.Sexo)
+            modelBuilder.Entity<Solicitud>()
+                   .HasOne(d => d.Persona)
+                    .WithMany(p => p.Solicitud)                    
                     .IsRequired();
 
+            modelBuilder.Entity<Estado>()
+                  .HasMany(d => d.Solicitud)
+                   .WithOne(p => p.Estado)
+                   .IsRequired();
 
-            });
+            modelBuilder.Entity<Solicitud>()
+                   .HasOne(d => d.Estado)
+                    .WithMany(p => p.Solicitud)
+                    .IsRequired();
 
-            modelBuilder.Entity<Persona>(entity =>
-            {
-                entity.HasMany(e => e.Solicitudes)
-                .WithOne();
-             
-            });
 
 
         }

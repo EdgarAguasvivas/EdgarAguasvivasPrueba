@@ -15,6 +15,6 @@ namespace EdgarAguasvivasPrueba.Models
         public string Direccion { get; set; }
         public string Sexo { get; set; }
 
-        public List<Solicitud> Solicitudes { get; set; }
+        public  ICollection<Solicitud> Solicitud { get; set; }
     }
 }

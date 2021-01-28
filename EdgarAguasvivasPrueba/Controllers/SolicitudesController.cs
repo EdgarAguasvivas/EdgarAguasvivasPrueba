@@ -2,6 +2,7 @@
 using EdgarAguasvivasPrueba.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,32 +18,38 @@ namespace EdgarAguasvivasPrueba.Controllers
         {
             _data = datacontext;
         }
-        public IActionResult IndexSolicitudes()
+
+        public IActionResult IndexSolicitudes(int estado = 0)
         {
-            return View(_data.Solicitudes.ToList());
+            ViewBag.Estados = new SelectList(_data.Estados, "Id", "EstadoNombre");
+            if (estado != 0) 
+            {
+                var query = _data.Solicitudes.Include(e => e.Persona).Include(e => e.Estado).Where(e => e.EstadoId == estado).ToList();              
+                return View(query);
+            }
+            else
+            {
+            var query = _data.Solicitudes.Include(e => e.Persona).Include(e => e.Estado).ToList();
+                return View(query);
+            }
+          
+            
+           
         }
+
+      
 
         public IActionResult CreateSolicitud()
         {
-            ViewBag.Estados = _data.Estados.Select(a =>
-                                  new SelectListItem
-                                  {
-                                      Value = a.Id.ToString(),
-                                      Text = a.EstadoNombre
-                                  }).ToList();
-            ViewBag.Personas = _data.Personas.Select(a =>
-                                  new SelectListItem
-                                  {
-                                      Value = a.Id.ToString(),
-                                      Text = a.Nombre + " " + a.Apellido
-                                  }).ToList();
+            ViewBag.Estados = new SelectList(_data.Estados, "Id", "EstadoNombre");
+            ViewBag.Personas = new SelectList( _data.Personas,"Id","Nombre");
             return View();
         }
 
         [HttpPost]
         public IActionResult CreateSolicitud(Solicitud solicitudModel)
         {
-            _data.Add(solicitudModel);
+            _data.Solicitudes.Add(solicitudModel);
             _data.SaveChanges();
 
             return RedirectToAction("IndexSolicitudes");
@@ -51,6 +58,8 @@ namespace EdgarAguasvivasPrueba.Controllers
 
         public IActionResult EditSolicitud(int? Id)
         {
+            ViewBag.Estados = new SelectList(_data.Estados, "Id", "EstadoNombre");
+            ViewBag.Personas = new SelectList(_data.Personas, "Id", "Nombre");
             return View(_data.Solicitudes.Where(e => e.Id == Id).FirstOrDefault());
         } 
         
@@ -64,12 +73,20 @@ namespace EdgarAguasvivasPrueba.Controllers
         }
 
         [HttpPost]
-        public IActionResult EliminarSolicitud(int id)
+        public IActionResult DeleteSolicitud(int id)
         {
             var solicitud = _data.Solicitudes.Where(a => a.Id == id).FirstOrDefault();
             _data.Solicitudes.Remove(solicitud);
             _data.SaveChanges();
             return RedirectToAction("IndexSolicitudes");
+        }
+
+        public JsonResult filterSolicitudes(int estado)
+        {
+            var query = _data.Solicitudes.Include(e => e.Persona).Include(e => e.Estado).Where(e => e.EstadoId == estado).ToList();
+
+
+            return Json(query);
         }
     }
 }

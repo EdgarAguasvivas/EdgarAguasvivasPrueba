@@ -8,6 +8,13 @@
 
 
 <h3><a asp-action="CreateSolicitud" class="btn btn-sm btn-secondary">Crear</a></h3>
+
+    <label> Select a status</label>
+    <select asp-items="@(@ViewBag.Estados)" class="form-control col-5" id="selectedEstado">
+        <option disabled value="0" selected>Seleccione</option>
+    </select>
+<br />
+
 <table class="table table-bordered table-sm table-striped">
     <thead>
         <tr><th>Id</th><th>Persona</th><th>Estado</th><th>Fecha De Creacion</th><th>...</th></tr>
@@ -24,12 +31,13 @@
             {
                 <tr>
                     <td>@p.Id</td>
-                    <td>@p.Personas</td>
-                    <td>@p.Estados</td>                  
+                    <td>@p.Persona.Nombre  @p.Persona.Apellido</td>
+                    <td>@p.Estado.EstadoNombre</td>
                     <td>@string.Format("{0:dddd, dd MMMM yyyy}", p.FechaCreacion)</td>
-                    <td><a asp-action="EditSolicitud" asp-route-id="@p.Id">Editar</a>                    
+                    <td>
+                        <a asp-action="EditSolicitud" asp-route-id="@p.Id" class="btn btn-dark">Editar</a>
                         <form asp-action="DeleteSolicitud" method="post" asp-route-id="@p.Id">
-                            <button>Eliminar</button>
+                            <button class="btn btn-danger">Eliminar</button>
                         </form>
                     </td>
                 </tr>
@@ -38,3 +46,13 @@
         }
     </tbody>
 </table>
+
+@section Scripts{
+    <script>
+        $("#selectedEstado").change(function () {
+            $.getJSON('/Solicitudes/IndexSolicitudes', { estado: $("#selectedEstado").val() }, function (company) {
+            });
+                 })
+    </script>
+
+}

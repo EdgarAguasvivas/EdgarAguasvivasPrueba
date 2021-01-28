@@ -4,14 +4,16 @@ using EdgarAguasvivasPrueba.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EdgarAguasvivasPrueba.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210128000532_editdatacontex5")]
+    partial class editdatacontex5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,13 +73,13 @@ namespace EdgarAguasvivasPrueba.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("EstadoId")
+                    b.Property<int?>("EstadoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FechaCreacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PersonaId")
+                    b.Property<int?>("PersonaId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -93,15 +95,11 @@ namespace EdgarAguasvivasPrueba.Migrations
                 {
                     b.HasOne("EdgarAguasvivasPrueba.Models.Estado", "Estado")
                         .WithMany("Solicitud")
-                        .HasForeignKey("EstadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EstadoId");
 
                     b.HasOne("EdgarAguasvivasPrueba.Models.Persona", "Persona")
                         .WithMany("Solicitud")
-                        .HasForeignKey("PersonaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PersonaId");
 
                     b.Navigation("Estado");
 

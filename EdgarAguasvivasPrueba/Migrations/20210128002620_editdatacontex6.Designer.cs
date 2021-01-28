@@ -4,14 +4,16 @@ using EdgarAguasvivasPrueba.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EdgarAguasvivasPrueba.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210128002620_editdatacontex6")]
+    partial class editdatacontex6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,7 +73,7 @@ namespace EdgarAguasvivasPrueba.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("EstadoId")
+                    b.Property<int?>("EstadoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FechaCreacion")
@@ -93,9 +95,7 @@ namespace EdgarAguasvivasPrueba.Migrations
                 {
                     b.HasOne("EdgarAguasvivasPrueba.Models.Estado", "Estado")
                         .WithMany("Solicitud")
-                        .HasForeignKey("EstadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EstadoId");
 
                     b.HasOne("EdgarAguasvivasPrueba.Models.Persona", "Persona")
                         .WithMany("Solicitud")

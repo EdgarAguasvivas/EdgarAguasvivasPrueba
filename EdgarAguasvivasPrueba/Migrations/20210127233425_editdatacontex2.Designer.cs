@@ -4,14 +4,16 @@ using EdgarAguasvivasPrueba.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EdgarAguasvivasPrueba.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210127233425_editdatacontex2")]
+    partial class editdatacontex2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,13 +94,13 @@ namespace EdgarAguasvivasPrueba.Migrations
             modelBuilder.Entity("EdgarAguasvivasPrueba.Models.Solicitud", b =>
                 {
                     b.HasOne("EdgarAguasvivasPrueba.Models.Estado", "Estado")
-                        .WithMany("Solicitud")
+                        .WithMany("Solicitudes")
                         .HasForeignKey("EstadoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EdgarAguasvivasPrueba.Models.Persona", "Persona")
-                        .WithMany("Solicitud")
+                        .WithMany("Solicitudes")
                         .HasForeignKey("PersonaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -110,12 +112,12 @@ namespace EdgarAguasvivasPrueba.Migrations
 
             modelBuilder.Entity("EdgarAguasvivasPrueba.Models.Estado", b =>
                 {
-                    b.Navigation("Solicitud");
+                    b.Navigation("Solicitudes");
                 });
 
             modelBuilder.Entity("EdgarAguasvivasPrueba.Models.Persona", b =>
                 {
-                    b.Navigation("Solicitud");
+                    b.Navigation("Solicitudes");
                 });
 #pragma warning restore 612, 618
         }

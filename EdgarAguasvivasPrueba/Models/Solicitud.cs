@@ -10,10 +10,10 @@ namespace EdgarAguasvivasPrueba.Models
         public int Id { get; set; }
         public DateTime FechaCreacion { get; set; }
 
-        public Persona  Personas { get; set; }
         public int PersonaId { get; set; }
+        public  Persona Persona { get; set; }
 
-        public  Estado Estados { get; set; }
         public int EstadoId { get; set; }
+        public  Estado Estado { get; set; }
     }
 }
